@@ -1,26 +1,20 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Budget App</title>
 </head>
 <body>
   <h1>Min Budget</h1>
 
-  <input type="text" id="description" placeholder="Beskrivning">
-  <input type="number" id="amount" placeholder="Belopp">
-
+  <input type="text" id="description" placeholder="Beskrivning" />
+  <input type="number" id="amount" placeholder="Belopp" />
   <button id="addIncome">Lägg till inkomst</button>
   <button id="addExpense">Lägg till utgift</button>
 
-  <h2>Inkomster</h2>
-  <ul id="incomeList"></ul>
+  <ul id="transactionList"></ul>
 
-  <h2>Utgifter</h2>
-  <ul id="expenseList"></ul>
-
-  <h2>Totalt saldo: <span id="totalBalance">0</span> kr</h2>
-
-  <script src="src/script.js" defer></script>
+  <script src="script.js"></script>
 </body>
 </html>
+
