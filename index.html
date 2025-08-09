@@ -9,8 +9,9 @@
 
   <input type="text" id="description" placeholder="Beskrivning">
   <input type="number" id="amount" placeholder="Belopp">
-  <button onclick="addTransaction('income')">Lägg till inkomst</button>
-  <button onclick="addTransaction('expense')">Lägg till utgift</button>
+
+  <button id="addIncome">Lägg till inkomst</button>
+  <button id="addExpense">Lägg till utgift</button>
 
   <h2>Inkomster</h2>
   <ul id="incomeList"></ul>
@@ -20,61 +21,6 @@
 
   <h2>Totalt saldo: <span id="totalBalance">0</span> kr</h2>
 
-  <script>
-    const incomeList = [];
-    const expenseList = [];
-
-    function addTransaction(type) {
-      const descriptionInput = document.getElementById("description");
-      const amountInput = document.getElementById("amount");
-
-      const description = descriptionInput.value.trim();
-      const amount = parseFloat(amountInput.value);
-
-      if (description === "" || isNaN(amount)) {
-        alert("Fyll i både beskrivning och belopp.");
-        return;
-      }
-
-      const transaction = { description, amount, type };
-
-      if (type === "income") {
-        incomeList.push(transaction);
-      } else {
-        expenseList.push(transaction);
-      }
-
-      updateDisplay();
-      descriptionInput.value = "";
-      amountInput.value = "";
-    }
-
-    function updateDisplay() {
-      const incomeUl = document.getElementById("incomeList");
-      const expenseUl = document.getElementById("expenseList");
-      const totalSpan = document.getElementById("totalBalance");
-
-      incomeUl.innerHTML = "";
-      expenseUl.innerHTML = "";
-
-      incomeList.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = `${item.description}: +${item.amount} kr`;
-        incomeUl.appendChild(li);
-      });
-
-      expenseList.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = `${item.description}: -${item.amount} kr`;
-        expenseUl.appendChild(li);
-      });
-
-      const totalIncome = incomeList.reduce((sum, item) => sum + item.amount, 0);
-      const totalExpenses = expenseList.reduce((sum, item) => sum + item.amount, 0);
-      const balance = totalIncome - totalExpenses;
-
-      totalSpan.textContent = balance + " kr";
-    }
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
